@@ -5,45 +5,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Te lo Vendo</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
+
+    <!-- BOOTSTRAP ICON -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
-    <header>
-        <h1>Te lo Vendo</h1>
-        <nav>
-            <a href="index.html">Inicio</a> | <a href="#">Productos</a> | <a href="contacto.html">Contacto</a>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+
+                <div class="navbar__container">
+
+                    <a class="navbar__brand" href="#">Te lo Vendo</a>
+
+                    <input type="checkbox" id="button-collapse" class="navbar__checkbox">
+                    <label for="button-collapse" class="navbar__label-checkbox">
+                        <i class="bi bi-list"></i>
+                        <i class="bi bi-x-lg"></i>
+                    </label>
+
+                    <ul class="navbar__menu">
+
+                        <li class="navbar__item">
+                            <a class="navbar__link" href="index.html">Inicio</a>
+                        </li>
+
+                        <li class="navbar__item">
+                            <a class="navbar__link" href="#">Productos</a>
+                        </li>
+
+                        <li class="navbar__item">
+                            <a class="navbar__link" href="contacto.html">Contacto</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>Formulario de Contacto</h2>
-
-            <form>
-                <div>
-                    <label for="name">Nombre </label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-
-                <div>
-                    <label for="email">Email </label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div>
-                    <label for="message">Mensaje </label>
-                    <textarea name="message" id="message" rows="6" cols="30" required></textarea>
-                </div>
-
-                <input type="submit" value="Enviar">
-            </form>
 
 
-        </section>
+    <main class="main">
+        <div class="container main__container ">
+            <section class="main__section">
+                <h2 class="main__title">Formulario de Contacto</h2>
+
+                <form class="form">
+                    <div class="form__section">
+                        <label for="name" class="form__label">Nombre </label>
+                        <input type="text" id="name" name="name" class="form__input" placeholder="Ingrese un nombre"
+                            required>
+                    </div>
+
+                    <div class="form__section">
+                        <label for="email" class="form__label">Email </label>
+                        <input type="email" id="email" name="email" class="form__input" placeholder="Ingrese un email"
+                            required>
+                    </div>
+
+                    <div class="form__section">
+                        <label for="message" class="form__label">Mensaje </label>
+                        <textarea name="message" id="message" rows="6" cols="30" placeholder="Ingrese un mensaje"
+                            class="form__input" required></textarea>
+                    </div>
+
+                    <input type="submit" value="Enviar" class="form__btn">
+                </form>
+
+
+            </section>
+        </div>
+
     </main>
 
-    <footer>
-        <p>Todos los derechos reservados. Te lo Vendo.2024</p>
+    <footer class="footer">
+        <div class="container footer__container">
+            <p class="footer__brand">Te lo Vendo</p>
+            <p class="footer__caption">Todos los derechos reservados. 2024</p>
+        </div>
+
     </footer>
 
 </body>
