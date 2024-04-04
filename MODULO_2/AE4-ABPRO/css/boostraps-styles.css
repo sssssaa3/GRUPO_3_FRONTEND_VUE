@@ -1,29 +1,15 @@
-:root {
-  --color-primary: #008b8b;
-  --color-secondary: #ffe3c3;
-  --color-white: #ffffff;
-  --color-gray: #d9d9d9;
-  --color-gray-dark: #363740;
-  --color-black: #1f1f26;
-
-  --font-family: "Raleway", sans-serif;
-}
-
+/* container */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* header */
-
-.header {
-  background-color: var(--color-primary);
-}
-
-.navbar-brand {
+/* logo */
+.navbar-brand,
+.footer__brand {
   text-decoration: none;
-  color: var(--color-white);
+  color: white;
   font-family: "Holtwood One SC", serif;
   font-size: 22px;
   font-weight: 400;
@@ -31,8 +17,37 @@
   margin-right: auto;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
+/* footer */
+.footer__caption {
+  font-size: 14px;
+  color: whitesmoke;
+}
+
+/* about-section */
+.about-section {
+  background-color: #ffe3c3;
+}
+
+.about-section__text {
+  max-width: 716px;
   margin: 0 auto;
+  text-wrap: pretty;
+}
+
+/* cards */
+.card-img-top {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+/* form */
+.form-section {
+  width: 100%;
+  max-width: 600px;
+}
+
+@media screen and (min-width: 1130px) {
+  .about-section__text {
+    max-width: 1082px;
+  }
 }
