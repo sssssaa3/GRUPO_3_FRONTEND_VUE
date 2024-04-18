@@ -5,18 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - Te lo Vendo</title>
-    <link rel="stylesheet" href="./css/style.css">
 
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
+
 
     <!-- BOOTSTRAP ICON -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- styles scss -->
+    <link rel="stylesheet" href="./css/main.css">
 
 
 </head>
@@ -37,8 +34,8 @@
 
                     <input type="checkbox" id="button-collapse" class="navbar__checkbox">
                     <label for="button-collapse" class="navbar__label-checkbox">
-                        <i class="bi bi-list"></i>
-                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-list navbar__button-closed"></i>
+                        <i class="bi bi-x-lg navbar__button-open"></i>
                     </label>
 
                     <ul class="navbar__menu">
@@ -65,97 +62,97 @@
 
 
         <section class="gallery-section">
-            <div class="container container__gallery ">
+            <div class="container">
                 <h2 class="gallery-section__title">Categorías</h2>
-                <div class="gallery-section__list">
+                <div class="gallery-section__list-cards">
 
-                    <div class="gallery-section__card">
-                        <div class="gallery-section__frame">
+                    <div class="card-category">
+                        <div class="card-category__frame">
                             <img src="./img/galeria_abarrotes.jpg"
                                 alt="Variedad de productos de abarrotes en un estante de supermercado, incluyendo frascos de café instantáneo Nescafé y paquetes de café Starbucks, con precios visibles en etiquetas rojas y blancas promocionando nuestra sección de abarrotes"
-                                class="gallery-section__img">
+                                class="card-category__img">
                         </div>
-                        <div class="gallery-section__card-body">
-                            <h3 class="gallery-section__card-title">Abarrotes</h3>
-                            <p class="gallery-section__card-text">Descubre la esencia de nuestros abarrotes: cada
+                        <div class="card-category__body">
+                            <h3 class="card-category__title">Abarrotes</h3>
+                            <p class="card-category__text">Descubre la esencia de nuestros abarrotes: cada
                                 estante está lleno de sabor y tradición, listo para que explores lo mejor seleccionado
                                 para ti.</p>
-                            <a href="#" class="gallery-section__btn">Ver más</a>
+                            <a href="#" class="card-category__btn">Ver más</a>
                         </div>
                     </div>
 
-                    <div class="gallery-section__card">
-                        <div class="gallery-section__frame">
+                    <div class="card-category">
+                        <div class="card-category__frame">
                             <img src="./img/galeria_lacteos.jpg"
                                 alt="Estante de supermercado bien surtido con una variedad de productos lácteos y alternativas lácteas, incluyendo leche, yogures y cremas en paquetes y botellas de diversos tamaños y marcas, con un diseño de iluminación brillante y estanterías organizadas promocionando nuestra sección de lácteos"
-                                class="gallery-section__img">
+                                class="card-category__img">
                         </div>
-                        <div class="gallery-section__card-body">
-                            <h3 class="gallery-section__card-title">Lácteos</h3>
-                            <p class="gallery-section__card-text">Nuestros lácteos fusionan frescura y calidad,
+                        <div class="card-category__body">
+                            <h3 class="card-category__title">Lácteos</h3>
+                            <p class="card-category__text">Nuestros lácteos fusionan frescura y calidad,
                                 ofreciéndote una variedad inigualable para enriquecer tu dieta con productos
                                 excepcionales y únicos</p>
-                            <a href="#" class="gallery-section__btn">Ver más</a>
+                            <a href="#" class="card-category__btn">Ver más</a>
                         </div>
                     </div>
 
-                    <div class="gallery-section__card">
-                        <div class="gallery-section__frame">
+                    <div class="card-category">
+                        <div class="card-category__frame">
                             <img src="./img/galeria_verduleria.jpg"
                                 alt="Sección de verduras frescas en un supermercado mostrando una variedad de lechugas, espinacas, pimientos, limones, paltas, y más, organizados en cajas con una presentación limpia y ordenada bajo luz intensa para resaltar los colores vivos de los alimentos promocionando nuestra sección de verduras"
-                                class="gallery-section__img">
+                                class="card-category__img">
                         </div>
-                        <div class="gallery-section__card-body">
-                            <h3 class="gallery-section__card-title">Verduras</h3>
-                            <p class="gallery-section__card-text">Cada verdura fresca seleccionada aporta vitalidad y
+                        <div class="card-category__body">
+                            <h3 class="card-category__title">Verduras</h3>
+                            <p class="card-category__text">Cada verdura fresca seleccionada aporta vitalidad y
                                 sabor puro a tu mesa, reflejando nuestra dedicación por brindarte lo mejor de la
                                 naturaleza.</p>
-                            <a href="#" class="gallery-section__btn">Ver más</a>
+                            <a href="#" class="card-category__btn">Ver más</a>
                         </div>
                     </div>
 
-                    <div class="gallery-section__card">
-                        <div class="gallery-section__frame">
+                    <div class="card-category">
+                        <div class="card-category__frame">
                             <img src="./img/galeria_botilleria.jpg"
                                 alt="Estante de supermercado con variedad de bebidas en botellas y latas, incluyendo refrescos, aguas saborizadas y cervezas, organizadas por marca y color promocionando nuestra sección de bebidas y licores."
-                                class="gallery-section__img">
+                                class="card-category__img">
                         </div>
-                        <div class="gallery-section__card-body">
-                            <h3 class="gallery-section__card-title">Botillería</h3>
-                            <p class="gallery-section__card-text">Explora nuestra botillería: desde vinos de viñedos
+                        <div class="card-category__body">
+                            <h3 class="card-category__title">Botillería</h3>
+                            <p class="card-category__text">Explora nuestra botillería: desde vinos de viñedos
                                 renombrados hasta licores de destilerías exclusivas, cada selección narra una historia
                                 única.</p>
-                            <a href="#" class="gallery-section__btn">Ver más</a>
+                            <a href="#" class="card-category__btn">Ver más</a>
                         </div>
                     </div>
 
-                    <div class="gallery-section__card">
-                        <div class="gallery-section__frame">
+                    <div class="card-category">
+                        <div class="card-category__frame">
                             <img src="./img/galeria_carniceria.jpg"
                                 alt="Variedad de cortes de carne roja y filetes envueltos en tocino presentados en bandejas y etiquetados en un mostrador para promocionar nuestra sección de carnicería."
-                                class="gallery-section__img">
+                                class="card-category__img">
                         </div>
-                        <div class="gallery-section__card-body">
-                            <h3 class="gallery-section__card-title">Carnicería</h3>
-                            <p class="gallery-section__card-text">La excelencia en nuestra carnicería viene de elegir
+                        <div class="card-category__body">
+                            <h3 class="card-category__title">Carnicería</h3>
+                            <p class="card-category__text">La excelencia en nuestra carnicería viene de elegir
                                 meticulosamente carnes de granjas con altos estándares, garantizando sabor y calidad
                                 superior.</p>
-                            <a href="#" class="gallery-section__btn">Ver más</a>
+                            <a href="#" class="card-category__btn">Ver más</a>
                         </div>
                     </div>
 
-                    <div class="gallery-section__card">
-                        <div class="gallery-section__frame">
+                    <div class="card-category">
+                        <div class="card-category__frame">
                             <img src="./img/galeria_confiteria.jpg"
                                 alt="Pasillo con estanterías repletas de diversas galletas y snacks empaquetados, con etiquetas de precios y ofertas especiales visibles para promocionar nuestra sección de confitería."
-                                class="gallery-section__img">
+                                class="card-category__img">
                         </div>
-                        <div class="gallery-section__card-body">
-                            <h3 class="gallery-section__card-title">Confitería</h3>
-                            <p class="gallery-section__card-text">Adéntrate en un mundo donde cada confite promete
+                        <div class="card-category__body">
+                            <h3 class="card-category__title">Confitería</h3>
+                            <p class="card-category__text">Adéntrate en un mundo donde cada confite promete
                                 momentos brillantes y felices, cuidadosamente seleccionados para endulzar tu vida con
                                 alegría.</p>
-                            <a href="#" class="gallery-section__btn">Ver más</a>
+                            <a href="#" class="card-category__btn">Ver más</a>
                         </div>
                     </div>
 
@@ -170,7 +167,7 @@
         </section>
 
         <section class="about-section">
-            <div class="container about-section__container">
+            <div class="container">
                 <h2 class="about-section__title">Acerca de nosotros</h2>
                 <p class="about-section__text">Fundado en 2024 por Doña Carmen Silvia Salas Lobos, una apasionada de la
                     nutrición y la sostenibilidad.
@@ -189,7 +186,7 @@
     </main>
 
     <footer class="footer">
-        <div class="container footer__container">
+        <div class="container">
             <p class="footer__brand">Te lo Vendo</p>
             <p class="footer__caption">Todos los derechos reservados. 2024</p>
         </div>
