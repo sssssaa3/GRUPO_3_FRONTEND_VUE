@@ -1,0 +1,38 @@
+@use "../abstracts/" as *;
+
+.main {
+  @include flexbox($direction: column, $grow: 1);
+
+  &__container {
+    @include flexbox($justify: center, $align: center, $grow: 1);
+  }
+
+  &__section {
+    @extend %padding-section;
+    width: 100%;
+    max-width: 37.5rem;
+  }
+
+  &__title {
+    @include font-styles(
+      $size: map-get($font-sizes, xl),
+      $weight: map-get($font-weight, "semi-bold"),
+      $color: $color-black,
+      $letter-spacing: map-get($letter-spacings, none)
+    ) {
+      margin-bottom: map-get($espaciados, xxl);
+      text-align: center;
+    }
+
+    @include respond-to($breakpoint: medium) {
+      @include font-styles(
+        $size: map-get($font-sizes, xxl),
+        $weight: map-get($font-weight, "regular"),
+        $color: $color-black,
+        $letter-spacing: map-get($letter-spacings, sm)
+      ) {
+        margin-bottom: map-get($espaciados, xxxl);
+      }
+    }
+  }
+}

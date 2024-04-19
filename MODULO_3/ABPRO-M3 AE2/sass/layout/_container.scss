@@ -1,0 +1,7 @@
+@use "../abstracts/" as *;
+
+.container {
+  width: 100%;
+  max-width: $max-width-page;
+  margin: $align-center;
+}

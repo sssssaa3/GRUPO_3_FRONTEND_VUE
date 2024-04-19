@@ -1,0 +1,22 @@
+@use "../abstracts/" as *;
+
+.footer {
+  background-color: $color-black;
+  text-align: center;
+  @extend %padding-section;
+
+  &__brand {
+    @extend %font-brand;
+  }
+
+  &__caption {
+    @include font-styles(
+      $size: map-get($font-sizes, xs),
+      $weight: map-get($font-weight, "regular"),
+      $color: $color-gray,
+      $letter-spacing: map-get($letter-spacings, md)
+    ) {
+      margin-top: map-get($espaciados, m);
+    }
+  }
+}

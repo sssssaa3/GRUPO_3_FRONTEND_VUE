@@ -1,0 +1,16 @@
+@use "./maps" as *;
+
+$color-primary: #008b8b;
+$color-secondary: #ffe3c3;
+$color-white: #ffffff;
+$color-gray: #d9d9d9;
+$color-gray-dark: #363740;
+$color-black: #1f1f26;
+
+$align-center: 0 auto;
+$max-width-page: 1200px;
+$border-radius: map-get($espaciados, s);
+$transition: all 0.4s;
+$border: 1px solid $color-gray;
+$shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1),
+  0 2px 0 rgba(0, 0, 0, 0.1);

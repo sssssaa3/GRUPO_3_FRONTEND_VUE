@@ -1,0 +1,48 @@
+@use "../abstracts/" as *;
+
+.card-category {
+  max-width: 21.875rem;
+  border: $border;
+  border-radius: $border-radius;
+  padding: map-get($espaciados, l);
+  box-shadow: $shadow;
+  &__frame {
+    width: 100%;
+    border-radius: $border-radius;
+    aspect-ratio: 16/9;
+  }
+
+  &__img {
+    @extend %img-dimensions;
+    border-radius: $border-radius;
+  }
+
+  &__body {
+    @include flexbox($direction: column, $gap: map-get($espaciados, l));
+    padding-top: map-get($espaciados, l);
+  }
+
+  &__title {
+    @include font-styles(
+      $size: map-get($font-sizes, md),
+      $weight: map-get($font-weight, "medium"),
+      $color: $color-gray-dark,
+      $letter-spacing: map-get($letter-spacings, xs)
+    ) {
+    }
+  }
+  &__text {
+    @include font-styles(
+      $size: map-get($font-sizes, base),
+      $weight: map-get($font-weight, "regular"),
+      $color: $color-gray-dark,
+      $letter-spacing: map-get($letter-spacings, lg),
+      $type-wrap: pretty
+    ) {
+    }
+  }
+
+  &__btn {
+    @include btn-styles;
+  }
+}
