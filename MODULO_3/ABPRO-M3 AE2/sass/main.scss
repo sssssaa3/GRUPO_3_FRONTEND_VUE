@@ -1,6 +1,17 @@
+@charset 'utf-8';
 @import url("https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+$espaciados: (
+  xs: 0.0625rem,
+  s: 0.25rem,
+  m: 0.5rem,
+  l: 1rem,
+  xl: 1.5rem,
+  xxl: 2rem,
+  xxxl: 4rem,
+);
 
 $color-primary: #008b8b;
 $color-secondary: #ffe3c3;
@@ -11,6 +22,11 @@ $color-black: #1f1f26;
 
 $align-center: 0 auto;
 $max-width-page: 1200px;
+$border-radius: map-get($espaciados, s);
+$transition: all 0.4s;
+$border: 1px solid $color-gray;
+$shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1),
+  0 2px 0 rgba(0, 0, 0, 0.1);
 
 /* maps */
 $font-weight: (
@@ -18,37 +34,33 @@ $font-weight: (
   "medium": 500,
   "semi-bold": 600,
 );
-
-$espaciados: (
-  xs: 0.0625rem,
-  //1px
-  s: 0.25rem,
-  //4px
-  m: 0.5rem,
-  //8px
-  l: 1rem,
-  // 16px
-  xl: 1.5rem,
-  // 24px
-  xxl: 2rem,
-  // 32px
-  xxxl: 4rem,
-  // 64px,
+$breakpoints: (
+  medium: 768px,
+  large: 1130px,
 );
 
-/* placeholders */
-%font-brand {
-  text-decoration: none;
-  color: $color-white;
-  font-family: "Holtwood One SC", serif;
-  font-size: 1.375rem;
-  font-weight: map-get($font-weight, "regular");
-  font-style: normal;
-}
+$font-sizes: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  base: 1rem,
+  md: 1.3125rem,
+  lg: 1.375rem,
+  xl: 1.5625rem,
+  xxl: 2.1875rem,
+);
+$letter-spacings: (
+  none: 0,
+  xs: 0.009375rem,
+  sm: 0.015625rem,
+  md: 0.025rem,
+  lg: 0.03125rem,
+  xl: 0.078125rem,
+);
 
-%padding-section {
-  padding: map-get($espaciados, xxxl) map-get($espaciados, xl);
-}
+$opacities: (
+  semi-transparent: 0.8,
+  opaque: 1,
+);
 
 /* mixins */
 
@@ -57,9 +69,10 @@ $espaciados: (
   $weight,
   $transform: none,
   $type-wrap: wrap,
-  $line-height: 1.2,
-  $letter-spacing: 0,
-  $color
+  $line-height: 1.3125rem,
+  $letter-spacing: map-get($letter-spacings, none),
+  $color,
+  $decoration: none
 ) {
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
@@ -71,26 +84,110 @@ $espaciados: (
   line-height: $line-height;
   letter-spacing: $letter-spacing;
   color: $color;
+  text-decoration: $decoration;
 
   @content;
 }
 
-/* reset */
-html {
+@mixin respond-to($breakpoint) {
+  $query: map-get($breakpoints, $breakpoint);
+  @media screen and (min-width: #{$query}) {
+    @content;
+  }
+}
+
+@mixin btn-styles() {
+  background-color: $color-primary;
+  padding: map-get($espaciados, m) map-get($espaciados, xl);
+  border-radius: $border-radius;
+  border: none;
+  cursor: pointer;
+
+  @include font-styles(
+    $size: map-get($font-sizes, sm),
+    $weight: map-get($font-weight, "medium"),
+    $color: $color-white,
+    $letter-spacing: map-get($letter-spacings, xl),
+    $transform: uppercase
+  ) {
+    text-align: center;
+  }
+
+  @include respond-to($breakpoint: large) {
+    opacity: map-get($opacities, semi-transparent);
+    transition: $transition;
+  }
+
+  &:hover {
+    @include respond-to($breakpoint: large) {
+      opacity: map-get($opacities, opaque);
+    }
+  }
+}
+
+@mixin flexbox(
+  $direction: row,
+  $wrap: nowrap,
+  $justify: flex-start,
+  $align: stretch,
+  $gap: 0,
+  $grow: 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  flex-grow: $grow;
+}
+
+/* placeholders */
+%font-brand {
+  text-decoration: none;
+  color: $color-white;
+  font-family: "Holtwood One SC", serif;
+  font-size: map-get($font-sizes, lg);
+  font-weight: map-get($font-weight, "regular");
+  font-style: normal;
+}
+
+%padding-section {
+  padding: map-get($espaciados, xxxl) map-get($espaciados, xl);
+}
+
+%reset-html {
   box-sizing: border-box;
   font-size: 100%;
+}
+
+%reset-elements {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+%img-dimensions {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* reset */
+html {
+  @extend %reset-html;
 }
 
 *,
 *::after,
 *::before {
-  padding: 0;
-  margin: 0;
-  box-sizing: inherit;
+  @extend %reset-elements;
 }
 
 body {
   min-height: 100vh;
+
+  @include flexbox($direction: column);
 }
 
 /* container */
@@ -109,11 +206,17 @@ body {
 .navbar {
   &__container {
     padding: map-get($espaciados, l) map-get($espaciados, xl);
-    display: flex;
-    flex-wrap: wrap;
     max-height: map-get($espaciados, xxxl);
     overflow: hidden;
-    transition: all 0.4s;
+    transition: $transition;
+
+    @include flexbox($wrap: wrap);
+
+    @include respond-to($breakpoint: medium) {
+      height: 4.1875rem;
+      max-height: 4.1875rem;
+      align-items: center;
+    }
   }
 
   &__brand {
@@ -121,42 +224,74 @@ body {
   }
 
   &__label-checkbox {
-    font-size: map-get($espaciados, xxl);
+    font-size: map-get($font-sizes, xxl);
     color: $color-gray;
-    height: map-get($espaciados, xxl);
     margin-left: auto;
     cursor: pointer;
+
+    @include respond-to($breakpoint: medium) {
+      display: none;
+    }
   }
 
   &__checkbox {
     appearance: none;
+
+    @include respond-to($breakpoint: medium) {
+      display: none;
+    }
   }
 
   &__menu {
     width: 100%;
     margin-top: map-get($espaciados, l);
     list-style-type: none;
+
+    @include respond-to($breakpoint: medium) {
+      width: auto;
+      margin: 0;
+      margin-left: auto;
+
+      @include flexbox();
+    }
   }
 
   &__container:has(&__checkbox:checked) {
-    max-height: 228px;
+    max-height: 14.25rem;
   }
 
   &__item {
     padding: map-get($espaciados, l);
-    display: flex;
-    justify-content: center;
+
+    @include flexbox($justify: center);
+    @include respond-to($breakpoint: medium) {
+      padding: 0 map-get($espaciados, l);
+    }
   }
 
   &__link {
     @include font-styles(
-      $size: 1rem,
+      $size: map-get($font-sizes, base),
       $weight: map-get($font-weight, "regular"),
       $transform: uppercase,
-      $letter-spacing: 0.03125rem,
+      $letter-spacing: map-get($letter-spacings, lg),
       $color: $color-gray
     ) {
-      text-decoration: none;
+    }
+
+    @include respond-to($breakpoint: medium) {
+      opacity: map-get($opacities, semi-transparent);
+    }
+
+    &:hover {
+      @include respond-to($breakpoint: medium) {
+        opacity: map-get($opacities, opaque);
+      }
+    }
+
+    &--active {
+      color: $color-white;
+      font-weight: map-get($font-weight, "semi-bold");
     }
   }
 
@@ -178,92 +313,91 @@ body {
 
   &__title {
     @include font-styles(
-      $size: 1.5625rem,
+      $size: map-get($font-sizes, xl),
       $weight: map-get($font-weight, "semi-bold"),
       $color: $color-black
     ) {
       text-align: center;
       margin-bottom: map-get($espaciados, xxl);
     }
+
+    @include respond-to($breakpoint: medium) {
+      @include font-styles(
+        $size: map-get($font-sizes, xxl),
+        $weight: map-get($font-weight, "regular"),
+        $color: $color-black,
+        $letter-spacing: map-get($letter-spacings, sm)
+      ) {
+        margin-bottom: map-get($espaciados, xxxl);
+      }
+    }
   }
 
   &__list-cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    @include flexbox(
+      $direction: column,
+      $wrap: wrap,
+      $align: center,
+      $gap: map-get($espaciados, l)
+    );
+
+    @include respond-to($breakpoint: medium) {
+      @include flexbox(
+        $direction: row,
+        $wrap: wrap,
+        $justify: center,
+        $align: center,
+        $gap: map-get($espaciados, l)
+      );
+    }
   }
 }
 
 /* card-category */
 .card-category {
-  max-width: 350px;
-  border: 1px solid $color-gray;
-  border-radius: 4px;
+  max-width: 21.875rem;
+  border: $border;
+  border-radius: $border-radius;
   padding: map-get($espaciados, l);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1),
-    0 2px 0 rgba(0, 0, 0, 0.1);
-
+  box-shadow: $shadow;
   &__frame {
     width: 100%;
-    border-radius: 4px;
+    border-radius: $border-radius;
     aspect-ratio: 16/9;
   }
 
   &__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 4px;
+    @extend %img-dimensions;
+    border-radius: $border-radius;
   }
 
   &__body {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    @include flexbox($direction: column, $gap: map-get($espaciados, l));
     padding-top: map-get($espaciados, l);
   }
 
   &__title {
     @include font-styles(
-      $size: 1.3125rem,
+      $size: map-get($font-sizes, md),
       $weight: map-get($font-weight, "medium"),
       $color: $color-gray-dark,
-      $letter-spacing: 0.009375rem
+      $letter-spacing: map-get($letter-spacings, xs)
     ) {
     }
   }
   &__text {
     @include font-styles(
-      $size: 1rem,
+      $size: map-get($font-sizes, base),
       $weight: map-get($font-weight, "regular"),
       $color: $color-gray-dark,
-      $letter-spacing: 0.03125rem,
+      $letter-spacing: map-get($letter-spacings, lg),
       $type-wrap: pretty
     ) {
     }
   }
 
   &__btn {
-    background-color: $color-primary;
-
-    padding: 8px 24px;
-
-    border-radius: 4px;
-    border: none;
-
-    @include font-styles(
-      $size: 0.875rem,
-      $weight: map-get($font-weight, "medium"),
-      $color: $color-white,
-      $letter-spacing: 0.078125rem,
-      $transform: uppercase
-    ) {
-      text-decoration: none;
-      text-align: center;
-    }
+    @include btn-styles;
   }
 }
 
@@ -275,26 +409,40 @@ body {
 
   &__title {
     @include font-styles(
-      $size: 1.5625rem,
+      $size: map-get($font-sizes, xl),
       $weight: map-get($font-weight, "semi-bold"),
       $color: $color-black
     ) {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: map-get($espaciados, xxl);
+    }
+
+    @include respond-to($breakpoint: medium) {
+      @include font-styles(
+        $size: map-get($font-sizes, xxl),
+        $weight: map-get($font-weight, "regular"),
+        $color: $color-black,
+        $letter-spacing: map-get($letter-spacings, sm)
+      ) {
+        margin-bottom: map-get($espaciados, xxxl);
+      }
     }
   }
 
   &__text {
     @include font-styles(
-      $size: 1rem,
+      $size: map-get($font-sizes, base),
       $weight: map-get($font-weight, "regular"),
       $color: $color-gray-dark,
-      $letter-spacing: 0.03125rem,
-      $type-wrap: pretty,
-      $line-height: 1.3125rem
+      $letter-spacing: map-get($letter-spacings, lg),
+      $type-wrap: pretty
     ) {
-      max-width: 716px;
+      max-width: 44.75rem;
       margin: $align-center;
+    }
+
+    @include respond-to($breakpoint: large) {
+      max-width: 67.625rem;
     }
   }
 }
@@ -311,12 +459,91 @@ body {
 
   &__caption {
     @include font-styles(
-      $size: 0.75rem,
+      $size: map-get($font-sizes, xs),
       $weight: map-get($font-weight, "regular"),
       $color: $color-gray,
-      $letter-spacing: 0.025rem
+      $letter-spacing: map-get($letter-spacings, md)
     ) {
-      margin-top: 8px;
+      margin-top: map-get($espaciados, m);
     }
+  }
+}
+
+/* page contact */
+
+/* main */
+
+.main {
+  @include flexbox($direction: column, $grow: 1);
+
+  &__container {
+    @include flexbox($justify: center, $align: center, $grow: 1);
+  }
+
+  &__section {
+    @extend %padding-section;
+    width: 100%;
+    max-width: 37.5rem;
+  }
+
+  &__title {
+    @include font-styles(
+      $size: map-get($font-sizes, xl),
+      $weight: map-get($font-weight, "semi-bold"),
+      $color: $color-black,
+      $letter-spacing: map-get($letter-spacings, none)
+    ) {
+      margin-bottom: map-get($espaciados, xxl);
+      text-align: center;
+    }
+
+    @include respond-to($breakpoint: medium) {
+      @include font-styles(
+        $size: map-get($font-sizes, xxl),
+        $weight: map-get($font-weight, "regular"),
+        $color: $color-black,
+        $letter-spacing: map-get($letter-spacings, sm)
+      ) {
+        margin-bottom: map-get($espaciados, xxxl);
+      }
+    }
+  }
+}
+
+/* form */
+.form {
+  @include flexbox($direction: column, $gap: map-get($espaciados, xl));
+
+  &__section {
+    @include flexbox($direction: column);
+  }
+
+  &__label {
+    @include font-styles(
+      $size: map-get($font-sizes, sm),
+      $weight: map-get($font-weight, "medium"),
+      $color: $color-gray-dark,
+      $letter-spacing: map-get($letter-spacings, lg),
+      $transform: uppercase
+    ) {
+    }
+  }
+
+  &__input {
+    border: $border;
+    padding: map-get($espaciados, m) map-get($espaciados, s);
+    border-radius: $border-radius;
+
+    @include font-styles(
+      $size: map-get($font-sizes, sm),
+      $weight: map-get($font-weight, "regular"),
+      $color: $color-gray-dark,
+      $letter-spacing: map-get($letter-spacings, lg)
+    ) {
+    }
+  }
+
+  &__btn {
+    @include btn-styles;
   }
 }

@@ -2,101 +2,116 @@
 <html lang="es">
 
 <head>
+    <!-- META -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Te lo Vendo</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <meta name="author" content="Te lo Vendo">
+    <meta name="description"
+        content="Contáctanos en Te lo Vendo para más información sobre nuestros productos y servicios o visita nuestra tienda en Santiago.">
+    <meta name="keywords" content="contacto Te lo Vendo, ubicación de tienda, servicios al cliente, ayuda compra">
 
-    <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <!-- TITLE -->
+    <title>Contacto - Te lo Vendo</title>
 
     <!-- BOOTSTRAP ICON -->
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- styles scss -->
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
+    <!-- HEADER -->
     <header class="header">
+        <!-- CONTAINER -->
         <div class="container">
+            <!-- NAVBAR -->
             <nav class="navbar">
-
+                <!-- NAVBAR CONTAINER-->
                 <div class="navbar__container">
-
+                    <!-- NAVBAR BRAND -->
                     <a class="navbar__brand" href="#">Te lo Vendo</a>
-
+                    <!-- NAVBAR BUTTON COLLAPSE-->
                     <input type="checkbox" id="button-collapse" class="navbar__checkbox">
                     <label for="button-collapse" class="navbar__label-checkbox">
-                        <i class="bi bi-list"></i>
-                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-list navbar__button-closed"></i>
+                        <i class="bi bi-x-lg navbar__button-open"></i>
                     </label>
-
+                    <!-- NAVBAR MENU -->
                     <ul class="navbar__menu">
-
+                        <!-- NAVBAR ITEM-->
                         <li class="navbar__item">
-                            <a class="navbar__link" href="index.html">Inicio</a>
+                            <!-- NAVBAR LINK-->
+                            <a class="navbar__link " href="index.html">Inicio</a>
                         </li>
-
+                        <!-- NAVBAR ITEM-->
                         <li class="navbar__item">
+                            <!-- NAVBAR LINK-->
                             <a class="navbar__link" href="#">Productos</a>
                         </li>
-
+                        <!-- NAVBAR ITEM-->
                         <li class="navbar__item">
-                            <a class="navbar__link" href="contacto.html">Contacto</a>
+                            <!-- NAVBAR LINK ACTIVE-->
+                            <a class="navbar__link navbar__link--active" href="contacto.html">Contacto</a>
                         </li>
                     </ul>
-
                 </div>
             </nav>
         </div>
     </header>
 
 
-
+    <!-- MAIN -->
     <main class="main">
+        <!-- CONTAINER -->
         <div class="container main__container ">
+            <!-- SECTION -->
             <section class="main__section">
+                <!-- TITLE SECTION -->
                 <h2 class="main__title">Formulario de Contacto</h2>
-
+                <!-- FORM -->
                 <form class="form">
+                    <!-- FORM GROUP -->
                     <div class="form__section">
+                        <!-- FORM LABEL -->
                         <label for="name" class="form__label">Nombre </label>
+                        <!-- FORM INPUT -->
                         <input type="text" id="name" name="name" class="form__input" placeholder="Ingrese un nombre"
                             required>
                     </div>
-
+                    <!-- FORM GROUP -->
                     <div class="form__section">
+                        <!-- FORM LABEL -->
                         <label for="email" class="form__label">Email </label>
+                        <!-- FORM INPUT -->
                         <input type="email" id="email" name="email" class="form__input" placeholder="Ingrese un email"
                             required>
                     </div>
-
+                    <!-- FORM GROUP -->
                     <div class="form__section">
+                        <!-- FORM LABEL -->
                         <label for="message" class="form__label">Mensaje </label>
+                        <!-- FORM TEXTAREA -->
                         <textarea name="message" id="message" rows="6" cols="30" placeholder="Ingrese un mensaje"
                             class="form__input" required></textarea>
                     </div>
-
+                    <!-- FORM BUTTON SUBMIT -->
                     <input type="submit" value="Enviar" class="form__btn">
                 </form>
-
-
             </section>
         </div>
-
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
-        <div class="container footer__container">
+        <!-- CONTAINER -->
+        <div class="container">
+            <!-- FOOTER BRAND-->
             <p class="footer__brand">Te lo Vendo</p>
+            <!-- FOOTER CAPTION -->
             <p class="footer__caption">Todos los derechos reservados. 2024</p>
         </div>
-
     </footer>
-
 </body>
 
 </html>
