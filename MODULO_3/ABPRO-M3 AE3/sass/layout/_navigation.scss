@@ -1,0 +1,105 @@
+@use "../abstracts/" as *;
+
+.navbar {
+  &__container {
+    padding: map-get($espaciados, l) map-get($espaciados, xl);
+    max-height: map-get($espaciados, xxxl);
+    overflow: hidden;
+    transition: $transition;
+
+    @include flexbox($wrap: wrap);
+
+    @include respond-to($breakpoint: medium) {
+      height: 4.1875rem;
+      max-height: 4.1875rem;
+      align-items: center;
+    }
+  }
+
+  &__brand {
+    @extend %font-brand;
+  }
+
+  &__label-checkbox {
+    font-size: map-get($font-sizes, xxl);
+    color: $color-gray;
+    margin-left: auto;
+    cursor: pointer;
+
+    @include respond-to($breakpoint: medium) {
+      display: none;
+    }
+  }
+
+  &__checkbox {
+    appearance: none;
+
+    @include respond-to($breakpoint: medium) {
+      display: none;
+    }
+  }
+
+  &__menu {
+    width: 100%;
+    margin-top: map-get($espaciados, l);
+    list-style-type: none;
+
+    @include respond-to($breakpoint: medium) {
+      width: auto;
+      margin: 0;
+      margin-left: auto;
+
+      @include flexbox();
+    }
+  }
+
+  &__container:has(&__checkbox:checked) {
+    max-height: 14.25rem;
+  }
+
+  &__item {
+    padding: map-get($espaciados, l);
+
+    @include flexbox($justify: center);
+    @include respond-to($breakpoint: medium) {
+      padding: 0 map-get($espaciados, l);
+    }
+  }
+
+  &__link {
+    @include font-styles(
+      $size: map-get($font-sizes, base),
+      $weight: map-get($font-weight, "regular"),
+      $transform: uppercase,
+      $letter-spacing: map-get($letter-spacings, lg),
+      $color: $color-gray
+    ) {
+    }
+
+    @include respond-to($breakpoint: medium) {
+      opacity: map-get($opacities, semi-transparent);
+    }
+
+    &:hover {
+      @include respond-to($breakpoint: medium) {
+        opacity: map-get($opacities, opaque);
+      }
+    }
+
+    &--active {
+      color: $color-white;
+      font-weight: map-get($font-weight, "semi-bold");
+    }
+  }
+
+  &__button-open {
+    display: none;
+  }
+
+  &__checkbox:checked + &__label-checkbox &__button-closed {
+    display: none;
+  }
+  &__checkbox:checked + &__label-checkbox &__button-open {
+    display: block;
+  }
+}

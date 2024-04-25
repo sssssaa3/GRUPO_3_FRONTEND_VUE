@@ -1,0 +1,7 @@
+@use "../abstracts/" as *;
+
+*,
+*::after,
+*::before {
+  @extend %reset-elements;
+}

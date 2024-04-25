@@ -1,0 +1,85 @@
+@use "../abstracts/" as *;
+
+.card {
+  border-radius: $border-radius;
+  padding: map-get($espaciados, l);
+
+  position: relative;
+
+  &--category {
+    max-width: 21.875rem;
+    border: $border;
+    box-shadow: $shadow;
+  }
+
+  &--product {
+    max-width: 17rem;
+    border: none;
+    box-shadow: none;
+  }
+
+  &__frame {
+    width: 100%;
+    border-radius: $border-radius;
+    aspect-ratio: 16/9;
+  }
+
+  &__img {
+    @extend %img-dimensions;
+    border-radius: $border-radius;
+  }
+
+  &__body {
+    @include flexbox($direction: column, $gap: map-get($espaciados, l));
+    padding-top: map-get($espaciados, l);
+  }
+
+  &__title {
+    @include font-styles(
+      $size: map-get($font-sizes, md),
+      $weight: map-get($font-weight, "medium"),
+      $color: $color-gray-dark,
+      $letter-spacing: map-get($letter-spacings, xs)
+    ) {
+    }
+  }
+
+  &__badge {
+    @include font-styles(
+      $size: map-get($font-sizes, xs),
+      $weight: map-get($font-weight, "medium"),
+      $color: $color-black
+    ) {
+    }
+
+    background-color: rgb(255, 153, 0);
+    padding: 4px;
+    border-radius: 4px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+  &__text {
+    @include font-styles(
+      $size: map-get($font-sizes, base),
+      $weight: map-get($font-weight, "regular"),
+      $color: $color-gray-dark,
+      $letter-spacing: map-get($letter-spacings, lg),
+      $type-wrap: pretty
+    ) {
+    }
+    &--price {
+      @include font-styles(
+        $size: map-get($font-sizes, lg),
+        $weight: map-get($font-weight, "semi-bold"),
+        $color: $color-black,
+        $letter-spacing: map-get($letter-spacings, lg)
+      ) {
+      }
+    }
+  }
+
+  &__btn {
+    @include btn-styles;
+  }
+}

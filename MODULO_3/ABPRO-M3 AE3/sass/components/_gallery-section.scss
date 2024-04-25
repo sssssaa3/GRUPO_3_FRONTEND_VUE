@@ -1,0 +1,50 @@
+@use "../abstracts/" as *;
+
+.gallery-section {
+  @extend %padding-section;
+
+  @include respond-to($breakpoint: large) {
+    padding-inline: 0;
+  }
+
+  &__title {
+    @include font-styles(
+      $size: map-get($font-sizes, xl),
+      $weight: map-get($font-weight, "semi-bold"),
+      $color: $color-black
+    ) {
+      text-align: center;
+      margin-bottom: map-get($espaciados, xxl);
+    }
+
+    @include respond-to($breakpoint: medium) {
+      @include font-styles(
+        $size: map-get($font-sizes, xxl),
+        $weight: map-get($font-weight, "regular"),
+        $color: $color-black,
+        $letter-spacing: map-get($letter-spacings, sm)
+      ) {
+        margin-bottom: map-get($espaciados, xxxl);
+      }
+    }
+  }
+
+  &__list-cards {
+    @include flexbox(
+      $direction: column,
+      $wrap: wrap,
+      $align: center,
+      $gap: map-get($espaciados, xxl)
+    );
+
+    @include respond-to($breakpoint: medium) {
+      @include flexbox(
+        $direction: row,
+        $wrap: wrap,
+        $justify: center,
+        $align: center,
+        $gap: map-get($espaciados, xl)
+      );
+    }
+  }
+}

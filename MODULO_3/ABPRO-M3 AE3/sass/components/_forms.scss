@@ -1,0 +1,38 @@
+@use "../abstracts/" as *;
+
+.form {
+  @include flexbox($direction: column, $gap: map-get($espaciados, xl));
+
+  &__section {
+    @include flexbox($direction: column);
+  }
+
+  &__label {
+    @include font-styles(
+      $size: map-get($font-sizes, sm),
+      $weight: map-get($font-weight, "medium"),
+      $color: $color-gray-dark,
+      $letter-spacing: map-get($letter-spacings, lg),
+      $transform: uppercase
+    ) {
+    }
+  }
+
+  &__input {
+    border: $border;
+    padding: map-get($espaciados, m) map-get($espaciados, s);
+    border-radius: $border-radius;
+
+    @include font-styles(
+      $size: map-get($font-sizes, sm),
+      $weight: map-get($font-weight, "regular"),
+      $color: $color-gray-dark,
+      $letter-spacing: map-get($letter-spacings, lg)
+    ) {
+    }
+  }
+
+  &__btn {
+    @include btn-styles;
+  }
+}

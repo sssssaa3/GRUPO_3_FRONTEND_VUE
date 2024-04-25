@@ -1,0 +1,81 @@
+@use "../base/typography" as *;
+@use "./maps" as *;
+@use "./variables" as *;
+
+@mixin font-styles(
+  $size,
+  $weight,
+  $transform: none,
+  $type-wrap: wrap,
+  $line-height: 1.3125rem,
+  $letter-spacing: map-get($letter-spacings, none),
+  $color,
+  $decoration: none
+) {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: $weight;
+  font-style: normal;
+  font-size: $size;
+  text-transform: $transform;
+  text-wrap: $type-wrap;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+  color: $color;
+  text-decoration: $decoration;
+
+  @content;
+}
+
+@mixin respond-to($breakpoint) {
+  $query: map-get($breakpoints, $breakpoint);
+  @media screen and (min-width: #{$query}) {
+    @content;
+  }
+}
+
+@mixin btn-styles() {
+  background-color: $color-primary;
+  padding: map-get($espaciados, m) map-get($espaciados, xl);
+  border-radius: $border-radius;
+  border: none;
+  cursor: pointer;
+
+  @include font-styles(
+    $size: map-get($font-sizes, sm),
+    $weight: map-get($font-weight, "medium"),
+    $color: $color-white,
+    $letter-spacing: map-get($letter-spacings, xl),
+    $transform: uppercase
+  ) {
+    text-align: center;
+  }
+
+  @include respond-to($breakpoint: large) {
+    opacity: map-get($opacities, semi-transparent);
+    transition: $transition;
+  }
+
+  &:hover {
+    @include respond-to($breakpoint: large) {
+      opacity: map-get($opacities, opaque);
+    }
+  }
+}
+
+@mixin flexbox(
+  $direction: row,
+  $wrap: nowrap,
+  $justify: flex-start,
+  $align: stretch,
+  $gap: 0,
+  $grow: 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  flex-grow: $grow;
+}
