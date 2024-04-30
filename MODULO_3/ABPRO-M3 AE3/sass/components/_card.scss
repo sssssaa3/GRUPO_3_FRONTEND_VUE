@@ -7,9 +7,13 @@
   position: relative;
 
   &--category {
-    max-width: 21.875rem;
+    max-width: 17rem;
     border: $border;
     box-shadow: $shadow;
+  }
+
+  @include respond-to($breakpoint: large) {
+    max-width: 21.875rem;
   }
 
   &--product {

@@ -1,6 +1,7 @@
 @use "../abstracts/" as *;
 
 .main {
+  margin-top: map-get($espaciados, xxxl);
   @include flexbox($direction: column, $grow: 1);
 
   &__container {

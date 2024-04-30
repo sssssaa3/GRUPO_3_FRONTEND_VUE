@@ -1,4 +1,9 @@
 @use "../abstracts/" as *;
 .header {
   background-color: $color-primary;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  box-shadow: $shadow;
 }

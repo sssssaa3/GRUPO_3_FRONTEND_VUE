@@ -19,4 +19,25 @@
       margin-top: map-get($espaciados, m);
     }
   }
+
+  &__container {
+    position: relative;
+  }
+  &__social-media {
+    @include flexbox(
+      $direction: row,
+      $justify: center,
+      $gap: map-get($espaciados, l)
+    );
+
+    margin-top: map-get($espaciados, l);
+
+    @include respond-to($breakpoint: medium) {
+      @include flexbox($direction: column, $gap: map-get($espaciados, l));
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: map-get($espaciados, xxl);
+    }
+  }
 }

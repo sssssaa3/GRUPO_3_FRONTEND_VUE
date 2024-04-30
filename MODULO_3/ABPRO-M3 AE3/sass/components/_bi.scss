@@ -1,0 +1,12 @@
+@use "../abstracts/" as *;
+.bi {
+  font-size: map-get($font-sizes, xl);
+  color: $color-gray;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}

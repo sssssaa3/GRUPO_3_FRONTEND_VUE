@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 /* maps */
 .navbar__brand, .footer__brand {
   text-decoration: none;
@@ -106,9 +107,14 @@ body {
   position: relative;
 }
 .card--category {
-  max-width: 21.875rem;
+  max-width: 17rem;
   border: 1px solid #d9d9d9;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 1130px) {
+  .card {
+    max-width: 21.875rem;
+  }
 }
 .card--product {
   max-width: 17rem;
@@ -357,6 +363,17 @@ body {
   }
 }
 
+.bi {
+  font-size: 1.5625rem;
+  color: #d9d9d9;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+.bi:hover {
+  opacity: 1;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -381,12 +398,46 @@ body {
   text-decoration: none;
   margin-top: 0.5rem;
 }
+.footer__container {
+  position: relative;
+}
+.footer__social-media {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  flex-grow: 0;
+  margin-top: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .footer__social-media {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1rem;
+    flex-grow: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2rem;
+  }
+}
 
 .header {
   background-color: #008b8b;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .main {
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
